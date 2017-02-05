@@ -1,4 +1,4 @@
-
+package ru.academit.patarevmaxim.shape;
 
 /**
  * Created by 1 on 04.02.2017.
@@ -6,19 +6,23 @@
 public class Square implements Shape {
     private double sideLength;
 
-    public Square (double sideLength) {
+    public Square(double sideLength) {
         this.sideLength = sideLength;
     }
-    public double getArea(){
+
+    public double getArea() {
         return Math.pow(sideLength, 2);
     }
-    public double getWidth(){
+
+    public double getWidth() {
         return sideLength;
     }
-    public double getHeight(){
+
+    public double getHeight() {
         return sideLength;
     }
-    public double getPerimeter(){
+
+    public double getPerimeter() {
         return sideLength * 4;
     }
 }
