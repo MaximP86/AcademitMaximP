@@ -6,8 +6,24 @@ package ru.academit.patarevmaxim.list;
 public class Main {
     public static void main(String[] args) {
         List s = new List();
-        s.add(2);
-        s.toString();
+        s.addToBeginning(17);
+        s.addToBeginning(15);
+        s.addToBeginning(12);
+        s.addToBeginning(9);
+        s.addToBeginning(7);
+        s.addToBeginning(5);
+        s.addToBeginning(4);
+        s.addToBeginning(2);
+        s.print();
+
+        System.out.printf("%nРазмер списка: %d%n", s.getListSize());
+
+        s.deleteFirstItem();
+        s.print();
+
+        s.deleteItemOfData(12);
+        s.print();
+
 
     }
 }
