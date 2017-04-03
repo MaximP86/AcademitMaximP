@@ -51,4 +51,12 @@ public class List {
             }
         }
     }
+
+    public int getDataOfIndex (int index) {
+        int i = 0;
+
+        for (ListItem p = head; p.getNext() != null; p = p.getNext()) {
+            if ()
+        }
+    }
 }

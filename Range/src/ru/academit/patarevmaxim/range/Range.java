@@ -23,6 +23,7 @@ public class Range {
         }
         this.from = from;
     }
+
     public void setTo(double to) {
         if (to < from) {
             throw new IllegalArgumentException("Значение конца диапазона должно быть больше начала");
@@ -34,11 +35,11 @@ public class Range {
         return to - from; // исходя из предположения, что to > from всегда, либо тогда использовать Math.abs()
     }
 
-    public boolean isInside(double x) {
+    public boolean isInside(double x) { // принадлежит ли число диапазону
         return (x >= from && x <= to);
     }
 
-    public Range intersection(Range range) {
+    public Range intersection(Range range) { // пересечение диапазонов
         if (range.from > this.to || this.from > range.to) {
             return null;
         } else {
@@ -46,10 +47,21 @@ public class Range {
         }
     }
 
-    public Range association (Range range) {
+    public Range[] association(Range range) { // объединение диапазонов
         if (range.from < this.to || this.from < range.to) {
-            return new Range(Math.max(this.from, range.from), Math.min(this.to, range.to));
+            Range[] r = {new Range(Math.max(this.from, range.from), Math.min(this.to, range.to))};
+            return r;
         }
+        Range[] r = {new Range(this.from, this.to), new Range(range.from, range.to)};
+        return r;
+    }
+
+    public Range[] difference(Range range) { // вычитание диапазонов
+        if (range.from < this.to || this.from < range.to) {
+            Range[] r = {new Range(this.from, range.from), new Range(this.to, range.to)};
+            return r;
+        }
+        return null;
     }
 
     public static void main(String[] args) {
@@ -62,9 +74,9 @@ public class Range {
         Range mySecondRange = new Range(2, 7);
         Range myThirdRange = new Range(5, 9);
         System.out.println(mySecondRange.intersection(myThirdRange));
+
+        System.out.println(mySecondRange.association(myThirdRange));
+        System.out.println(mySecondRange.difference(myThirdRange));
     }
-
-
-
 }
 
